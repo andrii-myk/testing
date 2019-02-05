@@ -1,0 +1,20 @@
+{% extends 'testing/base_testing.html' %}
+
+{% block title %}
+    {{ test.title }}
+{% endblock %}
+
+{% block content_title %}
+    <h2>{{ test.title }}</h2>
+{% endblock %}
+
+{% block content %}
+
+    <h3>{{test.description}} </h3>
+    {% for question in test.questions.all %}
+        <p>{{ question }}</p>
+        {% empty %}
+        empty list!
+  {% endfor %}
+
+{% endblock %}
