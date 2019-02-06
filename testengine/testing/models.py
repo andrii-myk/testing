@@ -6,18 +6,9 @@ from django.template.defaultfilters import slugify
 
 class Question(models.Model):
     question = models.TextField(db_index=True)
-    slug = models.SlugField(max_length=50, unique=True, blank = True)
-    #category = models.ForeignKey('Category', blank = True, null=True,on_delete=models.CASCADE)
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            # Newly created object, so set slug
-            self.slug = slugify(self.question[:100])
-
-        super(Question, self).save(*args, **kwargs)
-    
     def __str__(self):
-        return f"{self.question}"
+        return self.question
 
 class Answer(models.Model):
     answer = models.TextField(blank=True, null=True)
